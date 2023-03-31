@@ -73,7 +73,7 @@
             <field name="res_model">aforo.tanques</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="menu_Aforos_y_Liquiedación" name="Aforos y Liquiedación" parent="stock.menu_stock_root" sequence="4">
+        <menuitem id="menu_Aforos_y_Liquiedación" name="Aforos y Liquidación" parent="stock.menu_stock_root" sequence="4">
             <menuitem action="action_aforo_tanques" id="menu_aforo_tanques" name="Aforo tanques" sequence="1"/>
         </menuitem>
     </data>
