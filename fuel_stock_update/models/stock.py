@@ -79,8 +79,8 @@ class StockPickingType(models.Model):
     _inherit = 'stock.picking.type'
 
     operation_type_internal = fields.Selection([
-        ('it_prog_carg','IT: Prog > Carg'),
-        ('it_carg_tank','IT: Carg > Tank'),
+        ('it_prog_carg','IT: Cargue en proveedor'),
+        ('it_carg_tank','IT: Carrotanque a tanque'),
         ('it_tank_tank','IT: Tank > Tank')], string="Operation Type Internal")
 
 class stockpicking(models.Model):
