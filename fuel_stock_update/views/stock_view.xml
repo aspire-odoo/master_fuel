@@ -40,10 +40,12 @@
                     <field domain="[('responsable', '=',True)]" name="responsable" options="{'no_open':true,'no_create':true}" string="Responsable"/>
                     <field name="vessel" string="Vessel" attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['outgoing']) ]}"/>
                     <!-- field to be visible in receipt/incoming -->
-                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming','internal']) ]}" domain="[('industry_id.industry_type','=','Transporte')]" name="empresa_transportadora" string="Empresa Transportadora"/>
-                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming','internal']) ]}" domain="[('industry_id.industry_type','=','Vehículo')]" name="placa" options="{}" string="Placa"/>
-                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming','internal']) ]}" name="conductor_2" string="Conductor"/>
-                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming','internal'])]}" name="cdula_conductor" string="Cédula conductor"/>
+
+                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming']),('operation_type_internal','not in',['it_prog_carg','it_carg_tank']) ]}" domain="[('industry_id.industry_type','=','Transporte')]" name="empresa_transportadora" string="Empresa Transportadora"/>
+                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming']),('operation_type_internal','not in',['it_prog_carg','it_carg_tank']) ]}" domain="[('industry_id.industry_type','=','Vehículo')]" name="placa" options="{}" string="Placa"/>
+                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming']),('operation_type_internal','not in',['it_prog_carg','it_carg_tank']) ]}" name="conductor_2" string="Conductor"/>
+                    <field attrs="{'invisible': [('company_id','!=',2),('picking_type_code','not in',['incoming']),('operation_type_internal','not in',['it_prog_carg','it_carg_tank'])]}" name="cdula_conductor" string="Cédula conductor"/>
+
                     <!--  -->
                     <field attrs="{'invisible': ['|',('company_id','!=',2),('picking_type_code','!=','incoming')]}" name="placa_remolque" string="Placa remolque"/>
                     <field attrs="{'invisible': ['|',('company_id','!=',2),('picking_type_code','!=','incoming')]}" name="sellos_instalados" string="Sellos instalados"/>
@@ -105,7 +107,7 @@
                             <field name="barriles" string="Barriles"/>
                             <field name="toneladas_netas_descargue" string="Toneladas netas"/>
                         </group>
-                        <group name="Para relacionar right">
+                        <group attrs="{'invisible': [('company_id','!=',2),('operation_type_internal','not in',['it_carg_tank','it_tank_tank']),('picking_type_code','!=','outgoing')]}" name="Para relacionar right">
                             <field attrs="{}" invisible="1" name="para_relacionar" string="Para relacionar"/>
                             <field name="tomo_muestra" string="Tomó muestra?" widget="boolean_toggle"/>
                             <field name="realiza_analisis_externo" string="Realiza análisis externo?" widget="boolean_toggle"/>
